@@ -18,7 +18,6 @@ const router = (app) => {
 
   app.post('/delete', mid.requiresLogin, controllers.Game.deleteGame);
 
-
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 
   app.post('/upload', file.uploadFile);

@@ -13,7 +13,6 @@ const deleteGame = async (req, res) => {
   }
 };
 
-
 const makeGame = async (req, res) => {
   if (!req.body.name || !req.body.hours || !req.body.start) {
     return res.status(400).json({ error: 'All fields are required' });
@@ -49,7 +48,6 @@ const getGames = (req, res) => {
     return res.json({ games: docs });
   });
 };
-
 
 module.exports = {
   makerPage,

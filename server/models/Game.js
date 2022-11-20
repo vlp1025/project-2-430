@@ -36,7 +36,6 @@ GameSchema.statics.toAPI = (doc) => ({
   name: doc.name,
   hours: doc.hours,
   start: doc.start,
-  start: doc.start
 });
 
 GameSchema.statics.findByOwner = (ownerId, callback) => {
@@ -45,7 +44,7 @@ GameSchema.statics.findByOwner = (ownerId, callback) => {
     owner: mongoose.Types.ObjectId(ownerId),
   };
 
-  return GameModel.find(search).select('name hours start start').lean().exec(callback);
+  return GameModel.find(search).select('name hours start').lean().exec(callback);
 };
 
 GameModel = mongoose.model('Game', GameSchema);
