@@ -1,43 +1,54 @@
 const helper = require('./helper.js');
  
-const handleDomo = (e) => {
+const handleGame = (e) => {
     e.preventDefault();
     helper.hideError();
  
-    const name = e.target.querySelector('#domoName').value;
-    const age = e.target.querySelector('#domoAge').value;
+    const name = e.target.querySelector('#gameName').value;
+    const hours = e.target.querySelector('#gamehours').value;
     const _csrf = e.target.querySelector('#_csrf').value;
-    const health = e.target.querySelector('#domoHealth').value;
+    const start = e.target.querySelector('#start').value;
  
  
-    if (!name || !age) {
+    if (!name || !hours || !start) {
         helper.handleError('All fields are required!');
         return false;
     }
  
-    helper.sendPost(e.target.action, { name, age, health, _csrf }, loadDomosFromServer);
+    helper.sendPost(e.target.action, { name, hours, start, _csrf }, loadGamesFromServer);
  
     return false;
 };
  
-const DomoForm = (props) => {
+ 
+const deleteGame = (e) => {
+ 
+    e.preventDefault();
+    helper.hideError();
+ 
+    const _csrf = document.querySelector('#_csrf').value;
+    const _id = e.target.querySelector('#_id').value;
+    helper.sendPost(e.target.action, { _id, _csrf }, loadGamesFromServer);
+}
+ 
+const GameForm = (props) => {
     return (
         <div>
-            <form id="domoForm"
-                onSubmit={handleDomo}
-                name="domoForm"
+            <form id="gameForm"
+                onSubmit={handleGame}
+                name="gameForm"
                 action="/maker"
                 method="POST"
-                className="domoForm"
+                className="gameForm"
             >
                 <label htmlFor="name">Name: </label>
-                <input type="text" id="domoName" name="name" placeholder="Domo Name" />
-                <label htmlFor="age">Age: </label>
-                <input type="number" id="domoAge" name="age" min="0" />
-                <label htmlFor="health">Health: </label>
-                <input type="number" id="domoHealth" name="health" min="0" max="10" />
+                <input type="text" id="gameName" name="name" placeholder="Game Name" />
+                <label htmlFor="hours">hours: </label>
+                <input type="number" id="gameHours" name="hours" min="0" />
+                <label htmlFor="start">Start Date: </label>
+                <input type="date" id="start" name="start"/>
                 <input type="hidden" id="_csrf" name="_csrf" value={props.csrf} />
-                <input className="makeDomoSubmit" type="submit" value="Make Domo" />
+                <input className="makeGameSubmit" type="submit" value="Make Game" />
  
  
             </form>
@@ -68,41 +79,57 @@ const DomoForm = (props) => {
     );
 };
  
-const DomoList = (props) => {
-    if (props.domos.length === 0) {
+const GameList = (props) => {
+    if (props.games.length === 0) {
         return (
-            <div className="domoList">
-                <h3 className='emptyDomo'>No Domos Yet!</h3>
+            <div className="gameList">
+                <h3 className='emptyGame'>No Games Yet!</h3>
             </div>
         );
     }
  
-    const domoNodes = props.domos.map(domo => {
-        const imageUrl = `/retrieve?_id=${domo.imgId}`;
+    const gameNodes = props.games.map(game => {
+        const imageUrl = `/retrieve?_id=${game.imgId}`;
+        const parsedDate = (new Date(Date.parse(game.start))).toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        console.log(game);
         return (
-            <div key={domo._id} className="domo">
-                <img src="/assets/img/domoface.jpeg" alt="domo face" className='domoFace' />
-                <h3 className='domoName'>Name: {domo.name} </h3>
-                <h3 className='domoAge'>Age: {domo.age} </h3>
-                <h3 className='domoHealth'>Health: {domo.health} </h3>
+            <div key={game._id} className="game">
+                <img src="/assets/img/gamePad.jpg" alt="game symbol" className='gameSymbol' />
+                <h3 className='gameName'>Name: {game.name} </h3>
+                <h3 className='gameHours'>Hours Played: {game.hours} </h3>
+                <h3 className='start'>Start Date: {parsedDate} </h3>
                 {/* <img src={imageUrl} /> */}
+                <form
+                    action="/delete"
+                    name="deleteButton"
+                    method='POST'
+                    onSubmit={deleteGame}
+                >
+                    <input className="makeGameSubmit" type="submit" value="Delete" />
+                    <input type="hidden" id="_csrf" name="_csrf" value={props.csrf} />
+                    <input type="hidden" id="_id" name='_id' value={game._id} />
+                </form>
             </div>
         );
     });
  
     return (
-        <div className='domoList'>
-            {domoNodes}
+        <div className='gameList'>
+            {gameNodes}
         </div>
     );
 };
  
-const loadDomosFromServer = async () => {
-    const response = await fetch('/getDomos');
+const loadGamesFromServer = async () => {
+    const response = await fetch('/getGames');
     const data = await response.json();
     ReactDOM.render(
-        <DomoList domos={data.domos} />,
-        document.getElementById('domos')
+        <GameList games={data.games} />,
+        document.getElementById('games')
     );
 };
  
@@ -111,13 +138,13 @@ const init = async () => {
     const data = await response.json();
  
     ReactDOM.render(
-        <DomoForm csrf={data.csrfToken} />,
-        document.getElementById('makeDomo')
+        <GameForm csrf={data.csrfToken} />,
+        document.getElementById('makeGame')
     );
  
     ReactDOM.render(
-        <DomoList domos={[]} />,
-        document.getElementById('domos')
+        <GameList games={[]} csrf={data.csrfToken} />,
+        document.getElementById('games')
     );
  
     // const domos = document.getElementById('domos');
@@ -126,9 +153,8 @@ const init = async () => {
     // image.src = `/retrieve?_id=${imageId}`;
     // domos.appendChild(image);
  
-    loadDomosFromServer();
+    loadGamesFromServer();
 };
  
 window.onload = init;
- 
  

@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 
 const FileSchema = new mongoose.Schema({
@@ -6,7 +5,6 @@ const FileSchema = new mongoose.Schema({
   name: {
     type: String,
   },
-
 
   data: {
     type: Buffer,
@@ -16,7 +14,6 @@ const FileSchema = new mongoose.Schema({
   size: {
     type: Number,
   },
-
 
   mimetype: {
     type: String,

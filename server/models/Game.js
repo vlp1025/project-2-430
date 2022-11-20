@@ -1,26 +1,25 @@
 const mongoose = require('mongoose');
 const _ = require('underscore');
 
-let DomoModel = {};
+let GameModel = {};
 
 const setName = (name) => _.escape(name).trim();
 
-const DomoSchema = new mongoose.Schema({
+const GameSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
     trim: true,
     set: setName,
   },
-  age: {
+  hours: {
     type: Number,
     min: 0,
     required: true,
   },
-  health: {
-    type: Number,
-    min: 0,
-    required: true,
+  start: {
+    type: Date,
+    default: Date.now,
   },
   owner: {
     type: mongoose.Schema.ObjectId,
@@ -33,20 +32,22 @@ const DomoSchema = new mongoose.Schema({
   },
 });
 
-DomoSchema.statics.toAPI = (doc) => ({
+GameSchema.statics.toAPI = (doc) => ({
   name: doc.name,
-  age: doc.age,
+  hours: doc.hours,
+  start: doc.start,
+  start: doc.start
 });
 
-DomoSchema.statics.findByOwner = (ownerId, callback) => {
+GameSchema.statics.findByOwner = (ownerId, callback) => {
   const search = {
     // Convert the string ownerId to an object id
     owner: mongoose.Types.ObjectId(ownerId),
   };
 
-  return DomoModel.find(search).select('name age health').lean().exec(callback);
+  return GameModel.find(search).select('name hours start start').lean().exec(callback);
 };
 
-DomoModel = mongoose.model('Domo', DomoSchema);
+GameModel = mongoose.model('Game', GameSchema);
 
-module.exports = DomoModel;
+module.exports = GameModel;
