@@ -43,7 +43,7 @@ const signup = async (req, res) => {
 
   try {
     const hash = await Account.generateHash(pass);
-    const newAccount = new Account({ username, unhashedPassword: pass, password: hash });
+    const newAccount = new Account({ username, password: hash });
     await newAccount.save();
     req.session.account = Account.toAPI(newAccount);
     return res.json({ redirect: '/maker' });
@@ -58,10 +58,49 @@ const signup = async (req, res) => {
 
 const getToken = (req, res) => res.json({ csrfToken: req.csrfToken() });
 
+
+const getUsername = (req, res) => {
+  Account.getUsername(req.session.account._id, (err, doc) => {
+    if (err) {
+      return res.status(400).json({ error: err });
+    }
+
+    return res.json({ username: doc });
+  });
+};
+
+
+const changePassword = async (req, res) => {
+
+  const newPass = `${req.body.newPass}`;
+  const newPass2 = `${req.body.newPass2}`;
+
+  const oldPassword = await Account.getCurrentPassword(req.session.account._id);
+  const newPassHash = await Account.generateHash(newPass);
+
+  if (oldPassword === newPassHash) {
+    return res.status(400).json({ error: 'New password should be different than the former password' });
+  }
+
+  if (!newPass || !newPass2) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  if (newPass !== newPass2) {
+    return res.status(400).json({ error: 'Passwords do not match' });
+  }
+  
+  await Account.changePassword(req.session.account._id, newPassHash);
+
+  return res.status(200).json({ error: '' });
+};
+
 module.exports = {
   loginPage,
   login,
-  logout,
   signup,
+  logout,
   getToken,
+  getUsername,
+  changePassword,
 };

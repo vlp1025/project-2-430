@@ -9,21 +9,30 @@
   <link rel="stylesheet" type="text/css" href="/assets/style.css" />
 
 
+    <!-- Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+        .font-family-karla {
+            font-family: karla;
+        }
+    </style>
+
   <style>
     #myDIV {
-      width: 100%;
+      width: 25%;
       height: 200PX;
       text-align: center;
       background-color: red;
     }
 
-   #myDIV2 {
+    #myDIV2 {
       width: 100%;
       height: 200PX;
       text-align: center;
       background-color: red;
     }
-
   </style>
 
 
@@ -44,6 +53,14 @@
 </head>
 
 <body>
+
+  <button id="changePassword">
+    Change Password
+  </button>
+
+  <section id="changePasswordSection"></section>
+
+
   <ul class="flex"></ul>
   <nav>
 

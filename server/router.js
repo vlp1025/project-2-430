@@ -10,6 +10,8 @@ const router = (app) => {
 
   app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
+  app.get('/getUsername', mid.requiresLogin, controllers.Account.getUsername);
+
 
   app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
 
@@ -21,6 +23,7 @@ const router = (app) => {
   app.post('/delete', mid.requiresLogin, controllers.Game.deleteGame);
 
 
+  app.post('/changePassword', mid.requiresLogin, controllers.Account.changePassword);
 
 
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
