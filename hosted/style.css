@@ -1,4 +1,4 @@
-html, body {
+/* html, body {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -284,3 +284,319 @@ h3.start {
 .game:last-child {
     margin-bottom:10px;
 }
+ */
+
+
+
+
+/* CSS */
+.formSubmit {
+    background-color: #0095ff;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.formSubmit:hover,
+.formSubmit:focus {
+    background-color: #07c;
+}
+
+.formSubmit:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.formSubmit:active {
+    background-color: #0064bd;
+    box-shadow: none;
+}
+
+
+
+
+
+.premium {
+    background-color: #0095ff;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.premium:hover,
+.premium:focus {
+    background-color: #07c;
+}
+
+.premium:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.premium:active {
+    background-color: #0064bd;
+    box-shadow: none;
+}
+
+
+
+
+
+
+#deleteButton {
+    background-color: red;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+#deleteButton:hover,
+#deleteButton:focus {
+    background-color: red;
+}
+
+#deleteButton:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+#deleteButton:active {
+    background-color: red;
+    box-shadow: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gameForm {
+    border: solid gray;
+    height: 500px;
+    width: 300px;
+    padding-top:15px;
+    background-color: gray;
+}
+
+.gameForm label {
+    display: inline-block;
+    width: 100px;
+    margin-left: 20px;
+    font-size: 1.0em;
+    color: cornsilk;
+}
+
+
+
+#uploadForm {
+    border: solid gray;
+    height: 100px;
+    width: 300px;
+    padding-top:15px;
+    background-color: gray;
+    color: cornsilk;
+
+}
+
+
+#retrieveForm {
+    border: solid gray;
+    height: 100px;
+    width: 300px;
+    padding-top:15px;
+    background-color: gray;
+    color: cornsilk;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#games {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    width: 70%;
+    min-width: 300px;
+    border: 4px solid rgb(255, 0, 162);
+    margin-top: 270px;
+    margin-right: 27px;
+
+}
+
+
+.game {
+    overflow: hidden;
+    background-color: rgb(48, 6, 60);
+    padding: 10px;
+    min-height:60px;
+}
+
+
+
+.game:hover {
+    transition: background-color 1s ease-out;
+    background-color: rgb(0, 0, 0);
+}
+
+img.gameSymbol {
+    height: 50px;
+    width: 50px;
+    float:left;
+}
+
+h3.emptyGame {
+   border-color: white;
+}
+
+h3.gameName {
+    color: cornflowerblue;
+    float:left;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 27px;
+}
+
+
+h3.gameHours {
+    color: cornflowerblue;
+    float:left;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 27px;
+}
+
+
+h3.start {
+    color: cornflowerblue;
+    float:left;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 27px;
+}
+
+
+/* h3.gameHours {
+    color: white;
+    float:left;
+    text-align: left;
+    width: 100px;
+    font-weight: bold;
+    padding-right: 40px;
+    font-size: 1.5em;
+}
+
+h3.start {
+    color: white;
+    float:left;
+    text-align: left;
+    width: 100px;
+    font-weight: bold;
+    padding-right: 40px;
+    font-size: 1.5em;
+}
+
+
+h3.start {
+    color: white;
+    float:left;
+    text-align: left;
+    width: 200px;
+    font-weight: bold;
+    padding-right: 40px;
+    font-size: 1.5em;
+} */

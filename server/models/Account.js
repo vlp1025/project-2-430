@@ -29,6 +29,10 @@ const AccountSchema = new mongoose.Schema({
     unique: true,
     match: /^[A-Za-z0-9_\-.]{1,16}$/,
   },
+  unhashedPassword: {
+    type: String,
+    required: true,
+  },
   password: {
     type: String,
     required: true,
@@ -71,6 +75,11 @@ AccountSchema.statics.authenticate = async (username, password, callback) => {
     return callback(err);
   }
 };
+
+
+
+
+
 
 AccountModel = mongoose.model('Account', AccountSchema);
 module.exports = AccountModel;

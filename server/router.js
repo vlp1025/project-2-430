@@ -6,6 +6,8 @@ const router = (app) => {
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
   app.get('/getGames', mid.requiresLogin, controllers.Game.getGames);
 
+
+
   app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
 
@@ -17,6 +19,9 @@ const router = (app) => {
   app.post('/maker', mid.requiresLogin, controllers.Game.makeGame);
 
   app.post('/delete', mid.requiresLogin, controllers.Game.deleteGame);
+
+
+
 
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 

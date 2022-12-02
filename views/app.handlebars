@@ -1,29 +1,94 @@
 <html lang="en">
+
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
   <title>GameMaker</title>
   <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-  <link rel="shortcut icon" href="/assets/img/favicon.png"/>
-  <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
+  <link rel="shortcut icon" href="/assets/img/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+
+
+  <style>
+    #myDIV {
+      width: 100%;
+      height: 200PX;
+      text-align: center;
+      background-color: red;
+    }
+
+   #myDIV2 {
+      width: 100%;
+      height: 200PX;
+      text-align: center;
+      background-color: red;
+    }
+
+  </style>
+
+
+  <script>
+    function goPremium() {
+      var x = document.getElementById("myDIV");
+      var y = document.getElementById("myDIV2");
+      if (x.style.display === "none" || y.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "block";
+      } else {
+        x.style.display = "none";
+        y.style.display = "none";
+      }
+    }
+  </script>
+
 </head>
+
 <body>
-  <nav><a href="/login"><img id="logo" src="/assets/img/face.png" alt="face logo"/></a>
-    <div class="navlink"><a href="/logout">Log out</a></div>
+  <ul class="flex"></ul>
+  <nav>
+
+
+    <button class="premium" onclick="goPremium()">Go Premium!</button>
+    <br>
+
+    <div id="myDIV">
+      AD
+    </div>
+
+    <li class="mr-6">
+      <a class="text-blue-500 hover:text-blue-800" id="loginButton" href="/logout">Logout</a>
+    </li>
+
+
   </nav>
+  </ul>
+
+
+
+
 
   <section id="makeGame">
 
   </section>
+
+
+  <div id="myDIV2">
+    AD
+  </div>
+  <br>
+
+
   <section id="games">
-    
+
   </section>
 
+
+
+
   <div id="gameMessage" class='hidden'>
-    <img id="speech" src="/assets/img/speech.png" alt="speech box"/>
     <h3><span id="errorMessage"></span></h3>
-    <img id="game" src="assets/img/angryBird.png" alt="game"/>
   </div>
   <script src="/assets/appBundle.js"></script>
 </body>
+
 </html>

@@ -105,7 +105,7 @@ const LoginWindow = (props) => {
 
             <main className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
                 <section>
-                    <h3 className="font-bold text-2xl">Welcome to Startup</h3>
+                    <h3 className="font-bold text-2xl">Welcome to GameMaker</h3>
                     <p className="text-gray-600 pt-2">Sign in to your account.</p>
                 </section>
 
@@ -121,11 +121,8 @@ const LoginWindow = (props) => {
                         <input type="password" id="pass" name="pass"
                             className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3" />
                     </div>
-                    <div className="flex justify-end">
-                        <a href="#" className="text-sm text-purple-600 hover:text-purple-700 hover:underline mb-6">Forgot
-                            your password?</a>
-                    </div>
-                    <div className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl
+              
+                    <div className="hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl
                 transition duration-200">
                         <input type="hidden" id="_csrf" name="_csrf" value={props.csrf} />
                         <input className="formSubmit" type="submit" value="Sign In" />
@@ -159,7 +156,7 @@ const SignUpWindow = (props) => {
 
             <main className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
                 <section>
-                    <h3 className="font-bold text-2xl">Welcome to Startup</h3>
+                    <h3 className="font-bold text-2xl">Welcome to GameMaker</h3>
                     <p className="text-gray-600 pt-2">Sign in to your account.</p>
                 </section>
 
@@ -180,10 +177,7 @@ const SignUpWindow = (props) => {
                         <input type="password" id="pass2" name="pass2"
                             className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3" />
                     </div>
-                    <div className="flex justify-end">
-                        <a href="#" className="text-sm text-purple-600 hover:text-purple-700 hover:underline mb-6">Forgot
-                            your password?</a>
-                    </div>
+              
                     <div className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl
                 transition duration-200">
                         <input type="hidden" id="_csrf" name="_csrf" value={props.csrf} />
