@@ -43,7 +43,7 @@ const signup = async (req, res) => {
 
   try {
     const hash = await Account.generateHash(pass);
-    const newAccount = new Account({ username, password: hash });
+    const newAccount = new Account({ username, unhashedPassword: pass, password: hash });
     await newAccount.save();
     req.session.account = Account.toAPI(newAccount);
     return res.json({ redirect: '/maker' });
@@ -56,12 +56,7 @@ const signup = async (req, res) => {
   }
 };
 
-
 const getToken = (req, res) => res.json({ csrfToken: req.csrfToken() });
-
-
-
-
 
 module.exports = {
   loginPage,
