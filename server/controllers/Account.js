@@ -92,6 +92,8 @@ const changePassword = async (req, res) => {
   return res.status(200).json({ error: '' });
 };
 
+const redirectErrorPage = (req, res) => res.status(404).render('404');
+
 module.exports = {
   loginPage,
   login,
@@ -100,4 +102,5 @@ module.exports = {
   getToken,
   getUsername,
   changePassword,
+  redirectErrorPage,
 };

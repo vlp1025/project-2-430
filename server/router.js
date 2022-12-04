@@ -5,6 +5,7 @@ const file = require('./controllers/files.js');
 const router = (app) => {
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
   app.get('/getGames', mid.requiresLogin, controllers.Game.getGames);
+  app.get('/404', controllers.Account.redirectErrorPage);
 
   app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
