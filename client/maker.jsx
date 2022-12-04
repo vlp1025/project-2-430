@@ -157,7 +157,7 @@ const GameList = (props) => {
                 <h3 className='gameName'>Name: {game.name} </h3>
                 <h3 className='gameHours'>Hours Played: {game.hours} </h3>
                 <h3 className='gameGenre'>Genre: {game.genre} </h3>
-                <h3 className='gamefileId'>fileId: {game.fileId} </h3>
+                <h3 className='gamefileId'>File ID: {game.fileId} </h3>
                 <h3 className='start'>Start Date: {parsedDate} </h3>
                 {/* <img src={imageUrl} /> */}
                 <form

@@ -304,7 +304,10 @@
  
  
  
- 
+ #makerApp{
+    background-color: rgb(48, 6, 60);
+
+ }
  
  
  
@@ -330,7 +333,7 @@
  
 .game {
     overflow: hidden;
-    background-color: rgb(48, 6, 60);
+    background-color: rgb(78, 16, 96);
     padding: 10px;
     min-height:60px;
 }
