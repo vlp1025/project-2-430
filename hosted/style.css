@@ -1,294 +1,3 @@
-/* html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-#logo {
-    height: 40px;
-    width: 40;
-    padding-top: 5px;
-    float:left;
-    border-radius: 8px;
-}
-
-nav {
-    width: 100%;
-    height: 50px;
-    background-color: gray;
-}
-
-nav:nth-child(1) {
-    padding-left: 25px;
-}
-
-.navlink {
-    padding: 5px;
-    padding-top: 12px;
-    padding-left: 20px;
-    color: white;
-    font-size: 1.3em;
-    float: left;
-}
-
-.navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
-    color: white;
-    text-decoration: none;
-    padding: 5px;
-    border-radius: 4px;
-    background-color: gray;
-    transition: background-color 0.4s ease;
-}
-
-.navlink a:hover {
-    transition: background-color 0.8s ease;
-    background-color: gray;
-}
-
-.gameForm {
-    border: 2px solid gray;
-    height: 35px;
-    width: 1200px;
-    margin-top:0px;
-    padding-top:10px;
-    background-color: gray;
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
-}
-
-.gameForm label {
-    display: inline-block;
-    width: 75px;
-    margin-left: 10px;
-    font-size: 1.2em;
-    color: white;
-}
-
-.gameForm input[type=text] {
-    float:left;
-}
-
-.makeGameSubmit {
-    transition: background-color 0.4s ease;
-    display: inline;
-    width: 90px;
-    background-color: gray;
-    border-radius: 2px;
-    color: white;
-    text-decoration: none;
-}
-
-.makeGameSubmit:link, .makeGameSubmit:visited, .makeGameSubmit:hover, .makeGameSubmit:active {
-    color: white;
-}
-
-.makeGameSubmit:hover {
-    transition: background-color 0.4s ease;
-    background-color: gray;
-}
-
-.mainForm {
-    height: 300px;
-    width: 350px;
-    margin: 0 auto;
-    padding-top: 350px;
-    font-size: 1.2em;
-}
-
-.mainForm h3 {
-    text-align: center;
-}
-
-.mainForm label {
-    display: inline-block;
-    width: 100px;
-    margin-right: 10px;
-    text-align: right;
-    font-size: 1.2em;
-}
-
-.formSubmit {
-    transition: background-color 0.4s ease;
-    text-align: center;
-    margin: 0 auto;
-    margin-left: 20px;
-    font-size: 1.2em;
-    width: 100px;
-    background-color: purple;
-    border-radius: 2px;
-    border-color: black;
-    padding: 3px 0px;
-    color: white;
-    text-decoration: none;
-}
-
-.formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
-    color: white;
-}
-
-.formSubmit:hover {
-    transition: background-color 0.4s ease;
-    background-color: gray;
-}
-
-#user, #pass, #pass2 {
-    text-align: center;
-    font-size: 1.1em;
-    width: 180px;
-    border-radius: 6px;
-}
-
-#user:focus, #pass:focus, #pass2:focus {
-    outline: none;
-    box-shadow: 0px 0px 1px 1px gray;
-}
-
-.hidden {
-    display: none;
-}
-
-#gameMessage {
-    top: 250px;
-    width: 250px;
-    height: 650px;
-    position: absolute;
-    z-index: 200;
-    right: 0px;
-    overflow: hidden;
-}
-
-#gameMessage h3 {
-    width: 200px;
-    position: absolute;
-    top: 0px;
-    left: 20px;
-}
-
-#speech {
-    height: 120px;
-    width: 250px;
-    z-index:300;
-}
-
-#errorMessage {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: red;
-    font-style: italic;
-}
-
-#game {
-    z-index: 225;
-    margin-top: -20px;
-    margin-left: 135px;
-    height: 450px;
-    width: 300px;
-    -ms-transform: rotate(330deg);
-    -webkit-transform: rotate(330deg); 
-    transform: rotate(330deg);
-}
-
-#games {
-    width: 60%;
-    min-width: 400px;
-    border: 2px solid gray;
-    border-radius: 4px;
-    margin: 0 auto;
-    margin-top: 100px;
-}
-
-.game {
-    width: 95%;
-    margin: 0 auto;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    border: 2px solid gray;
-    border-radius: 4px;
-    background-color: gray;
-    padding: 10px;
-    min-height:60px;
-    overflow: hidden;
-}
-
-.game:hover {
-    transition: border-color 0.2s ease-out;
-    border-color: rgba(255,255,255, 0.8);
-    transition: background-color 2.6s ease-out;
-    background-color: gray;
-}
-
-img.gameSymbol {
-    margin-left: 25px;
-    margin-right: 10px;
-    height: 50px;
-    width: 50px;
-    border-radius: 4px;
-    margin-top:10px;
-    float:left;
-}
-
-h3.emptyGame {
-    width: 400px;
-    font-size: 1.5em;
-    margin: 0 auto;
-    text-align: center;
-    margin-top: 18px;
-}
-
-h3.gameName {
-    color: white;
-    float:left;
-    width: 300px;
-    font-weight: bold;
-    padding-left: 65px;
-    font-size: 1.5em;
-}
-
-h3.gameHours {
-    color: white;
-    float:left;
-    text-align: left;
-    width: 100px;
-    font-weight: bold;
-    padding-right: 40px;
-    font-size: 1.5em;
-}
-
-h3.start {
-    color: white;
-    float:left;
-    text-align: left;
-    width: 100px;
-    font-weight: bold;
-    padding-right: 40px;
-    font-size: 1.5em;
-}
-
-
-h3.start {
-    color: white;
-    float:left;
-    text-align: left;
-    width: 200px;
-    font-weight: bold;
-    padding-right: 40px;
-    font-size: 1.5em;
-}
-
-.game:first-child {
-    margin-top: 10px;
-}
-
-.game:last-child {
-    margin-bottom:10px;
-}
- */
-
-
-
-
 /* CSS */
 .formSubmit {
     background-color: #0095ff;
@@ -313,32 +22,34 @@ h3.start {
     -webkit-user-select: none;
     touch-action: manipulation;
     white-space: nowrap;
-
-
+ 
+ 
     display: block;
     margin-left: auto;
     margin-right: auto
 }
-
+ 
 .formSubmit:hover,
 .formSubmit:focus {
     background-color: #07c;
 }
-
+ 
 .formSubmit:focus {
     box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
 }
-
+ 
 .formSubmit:active {
     background-color: #0064bd;
     box-shadow: none;
 }
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
 .premium {
+    margin-top: 5px;
+
     background-color: #0095ff;
     border: 1px solid transparent;
     border-radius: 3px;
@@ -361,32 +72,81 @@ h3.start {
     -webkit-user-select: none;
     touch-action: manipulation;
     white-space: nowrap;
-
-
+ 
+ 
     display: block;
     margin-left: auto;
     margin-right: auto
 }
-
+ 
 .premium:hover,
 .premium:focus {
     background-color: #07c;
 }
-
+ 
 .premium:focus {
     box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
 }
-
+ 
 .premium:active {
     background-color: #0064bd;
     box-shadow: none;
 }
 
 
+ 
+ 
+ 
+
+.makeGameSubmit {
+
+    background-color: #0095ff;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .8em;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    margin-left: 40px;
+
+
+}
+ 
+.makeGameSubmit:hover,
+.makeGameSubmit:focus {
+    background-color: #07c;
+}
+ 
+.makeGameSubmit:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+ 
+.makeGameSubmit:active {
+    background-color: #0064bd;
+    box-shadow: none;
+}
+ 
 
 
 
 
+ 
+ 
+ 
 #deleteButton {
     background-color: red;
     border: 1px solid transparent;
@@ -410,102 +170,151 @@ h3.start {
     -webkit-user-select: none;
     touch-action: manipulation;
     white-space: nowrap;
-
-
+ 
+ 
     display: block;
     margin-left: auto;
     margin-right: auto
 }
-
+ 
 #deleteButton:hover,
 #deleteButton:focus {
     background-color: red;
 }
-
+ 
 #deleteButton:focus {
     box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
 }
-
+ 
 #deleteButton:active {
     background-color: red;
     box-shadow: none;
 }
+ 
+ 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#changePassword {
+    margin-top: 5px;
+    background-color: yellowgreen;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+ 
+ 
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+ 
+#changePassword:hover,
+#changePassword:focus {
+    background-color: red;
+}
+ 
+#changePassword:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+ 
+#changePassword:active {
+    background-color: red;
+    box-shadow: none;
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 .gameForm {
+    margin-left: 15px;
     border: solid gray;
-    height: 500px;
+    height: 550px;
     width: 300px;
     padding-top:15px;
     background-color: gray;
 }
-
+ 
 .gameForm label {
     display: inline-block;
     width: 100px;
-    margin-left: 20px;
     font-size: 1.0em;
     color: cornsilk;
 }
-
-
-
+ 
+ 
+ 
 #uploadForm {
+    margin-left: 15px;
     border: solid gray;
     height: 100px;
     width: 300px;
     padding-top:15px;
     background-color: gray;
-    color: cornsilk;
-
+    color: rgb(112, 246, 112);
+ 
 }
-
-
+ 
+ 
 #retrieveForm {
+    margin-left: 15px;
     border: solid gray;
     height: 100px;
     width: 300px;
     padding-top:15px;
     background-color: gray;
-    color: cornsilk;
-
+    color: rgb(112, 246, 112);
+ 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 #games {
     position: absolute;
     top: 8px;
@@ -513,36 +322,36 @@ h3.start {
     width: 70%;
     min-width: 300px;
     border: 4px solid rgb(255, 0, 162);
-    margin-top: 100px;
+    margin-top: 170px;
     margin-right: 27px;
-
+ 
 }
-
-
+ 
+ 
 .game {
     overflow: hidden;
     background-color: rgb(48, 6, 60);
     padding: 10px;
     min-height:60px;
 }
-
-
-
+ 
+ 
+ 
 .game:hover {
     transition: background-color 1s ease-out;
     background-color: rgb(0, 0, 0);
 }
-
+ 
 img.gameSymbol {
     height: 50px;
     width: 50px;
     float:left;
 }
-
+ 
 h3.emptyGame {
    border-color: white;
 }
-
+ 
 h3.gameName {
     color: cornflowerblue;
     float:left;
@@ -550,8 +359,8 @@ h3.gameName {
     font-size: 1.2em;
     margin-left: 27px;
 }
-
-
+ 
+ 
 h3.gameHours {
     color: cornflowerblue;
     float:left;
@@ -559,8 +368,25 @@ h3.gameHours {
     font-size: 1.2em;
     margin-left: 27px;
 }
-
-
+ 
+ 
+h3.gameGenre {
+    color: cornflowerblue;
+    float:left;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 27px;
+}
+ 
+h3.gamefileId {
+    color: cornflowerblue;
+    float:left;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 27px;
+}
+ 
+ 
 h3.start {
     color: cornflowerblue;
     float:left;
@@ -568,35 +394,3 @@ h3.start {
     font-size: 1.2em;
     margin-left: 27px;
 }
-
-
-/* h3.gameHours {
-    color: white;
-    float:left;
-    text-align: left;
-    width: 100px;
-    font-weight: bold;
-    padding-right: 40px;
-    font-size: 1.5em;
-}
-
-h3.start {
-    color: white;
-    float:left;
-    text-align: left;
-    width: 100px;
-    font-weight: bold;
-    padding-right: 40px;
-    font-size: 1.5em;
-}
-
-
-h3.start {
-    color: white;
-    float:left;
-    text-align: left;
-    width: 200px;
-    font-weight: bold;
-    padding-right: 40px;
-    font-size: 1.5em;
-} */

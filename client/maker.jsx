@@ -1,3 +1,4 @@
+
 const helper = require('./helper.js');
 
 const handleGame = (e) => {
@@ -6,16 +7,18 @@ const handleGame = (e) => {
 
     const name = e.target.querySelector('#gameName').value;
     const hours = e.target.querySelector('#gamehours').value;
+    const genre = e.target.querySelector('#gameGenre').value;
     const _csrf = e.target.querySelector('#_csrf').value;
+    const fileId = e.target.querySelector('#gamefileId').value;
     const start = e.target.querySelector('#start').value;
 
 
-    if (!name || !hours || !start) {
+    if (!name || !hours || !start || !fileId || !genre) {
         helper.handleError('All fields are required!');
         return false;
     }
 
-    helper.sendPost(e.target.action, { name, hours, start, _csrf }, loadGamesFromServer);
+    helper.sendPost(e.target.action, { name, hours, start, genre, fileId, _csrf }, loadGamesFromServer);
 
     return false;
 };
@@ -42,7 +45,42 @@ const GameForm = (props) => {
                 className="gameForm"
             >
 
-                <label htmlFor="name">Name: </label>
+                <div className="grid gap-6 mb-6 md:grid-cols-2" id="gameForm1">
+                    <div>
+                        <label htmlFor="name" className="ml-12 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name:</label>
+                        <input type="text" id="gameName" name="name" placeholder="Game Name" className="ml-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                    </div>
+                    <br />
+                    <div>
+                        <label htmlFor="hours" className="ml-12 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Hours:</label>
+                        <input type="number" id="gameHours" name="hours" className="ml-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                    </div>
+                    <br />
+                    <div>
+                        <label htmlFor="fileId" className="ml-12 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">File ID:</label>
+                        <input type="text" id="gamefileId" name="fileId" className="ml-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                    </div>
+                    <br />
+                    <div>
+                        <label htmlFor="genre" className="ml-12 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Genre:</label>
+                        <input type="text" id="gameGenre" name="genre" className="ml-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                    </div>
+                    <br />
+                    <div>
+                        <label htmlFor="start" className="ml-12 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Start Date:</label>
+                        <input type="date" id="start" name="start" className="ml-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                    </div>
+
+                    <input type="hidden" id="_csrf" name="_csrf" value={props.csrf} />
+                    <br /><br />
+                    <input className="makeGameSubmit" type="submit" value="Make Game" />
+
+                </div>
+
+
+
+
+                {/* <label htmlFor="name">Name: </label>
                 <br /><br />
                 <input type="text" id="gameName" name="name" placeholder="Game Name" />
                 <br /><br />
@@ -50,11 +88,20 @@ const GameForm = (props) => {
                 <br /><br />
                 <input type="number" id="gameHours" name="hours" min="0" />
                 <br /><br />
+                <label htmlFor="fileId">fileId: </label>
+                <br /><br />
+                <input type="text" id="gamefileId" name="fileId" />
+                <br /><br />
+                <label htmlFor="genre">Genre: </label>
+                <br /><br />
+                <input type="text" id="gameGenre" name="genre" />
+                <br /><br />
                 <label htmlFor="start">Start Date: </label>
                 <br /><br />
                 <input type="date" id="start" name="start" />
                 <input type="hidden" id="_csrf" name="_csrf" value={props.csrf} />
-                <input className="makeGameSubmit" type="submit" value="Make Game" />
+                <br /><br />
+                <input className="makeGameSubmit" type="submit" value="Make Game" /> */}
 
 
             </form>
@@ -67,7 +114,7 @@ const GameForm = (props) => {
                 <input type="file" name="sampleFile" />
                 <input type="hidden" id="_csrf" name="_csrf" value={props.csrf} />
                 <br /><br />
-                <input type='submit' value='Upload!' />
+                <input type='submit' value='Upload!' id="uploadButton" />
             </form>
 
             <form
@@ -109,6 +156,8 @@ const GameList = (props) => {
                 <img src="/assets/img/gamePad.jpg" alt="game symbol" className='gameSymbol' />
                 <h3 className='gameName'>Name: {game.name} </h3>
                 <h3 className='gameHours'>Hours Played: {game.hours} </h3>
+                <h3 className='gameGenre'>Genre: {game.genre} </h3>
+                <h3 className='gamefileId'>fileId: {game.fileId} </h3>
                 <h3 className='start'>Start Date: {parsedDate} </h3>
                 {/* <img src={imageUrl} /> */}
                 <form
@@ -134,7 +183,7 @@ const GameList = (props) => {
 
 
 
-// change pass 
+// change pass
 const changePassword = (e) => {
     e.preventDefault();
     helper.hideError();
@@ -166,10 +215,27 @@ const ChangePasswordWindow = (props) => {
             action="/changePassword"
             method='POST'
         >
-            <label htmlFor="pass">New password: </label>
-            <input type="password" id="pass" name="pass" placeholder="new password" />
-            <label htmlFor="pass2">Confirm New password: </label>
-            <input type="password" id="pass2" name="pass2" placeholder="retype new password" />
+{/* 
+            <div>
+                <label htmlFor="pass" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">New password:</label>
+                <input type="password" id="pass" name="pass" placeholder="new password" className="ml-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+            </div>
+
+            <div>
+                <label htmlFor="pass2" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Confirm New password:</label>
+                <input type="password" id="pass2" name="pass2" placeholder="retype new password" className="ml-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+            </div> */}
+
+
+            <label htmlFor="pass" className="block ml-5">New password: </label>
+            <input type="password" id="pass" name="pass" placeholder="new password" className="block ml-5 " />
+
+
+
+            <label htmlFor="pass2" className="block ml-5">Confirm New password: </label>
+            <input type="password" id="pass2" name="pass2" placeholder="retype new password" className="block ml-5"/>
+
+
             <input type="hidden" id="_csrf" name="_csrf" value={props.csrf} />
             <input className="formSubmit" type="submit" value="Change Password" />
         </form>
@@ -232,4 +298,6 @@ const init = async () => {
 };
 
 window.onload = init;
+
+
 
