@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const _ = require('underscore');
- 
+
 let GameModel = {};
- 
+
 const setName = (name) => _.escape(name).trim();
- 
+
 const GameSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -43,7 +43,7 @@ const GameSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
- 
+
 GameSchema.statics.toAPI = (doc) => ({
   name: doc.name,
   hours: doc.hours,
@@ -51,17 +51,16 @@ GameSchema.statics.toAPI = (doc) => ({
   fileId: doc.fileId,
   start: doc.start,
 });
- 
+
 GameSchema.statics.findByOwner = (ownerId, callback) => {
   const search = {
     // Convert the string ownerId to an object id
     owner: mongoose.Types.ObjectId(ownerId),
   };
- 
+
   return GameModel.find(search).select('name hours start fileId genre').lean().exec(callback);
 };
- 
+
 GameModel = mongoose.model('Game', GameSchema);
- 
+
 module.exports = GameModel;
- 

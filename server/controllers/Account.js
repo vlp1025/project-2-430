@@ -58,7 +58,6 @@ const signup = async (req, res) => {
 
 const getToken = (req, res) => res.json({ csrfToken: req.csrfToken() });
 
-
 const getUsername = (req, res) => {
   Account.getUsername(req.session.account._id, (err, doc) => {
     if (err) {
@@ -69,9 +68,7 @@ const getUsername = (req, res) => {
   });
 };
 
-
 const changePassword = async (req, res) => {
-
   const newPass = `${req.body.newPass}`;
   const newPass2 = `${req.body.newPass2}`;
 
@@ -89,7 +86,7 @@ const changePassword = async (req, res) => {
   if (newPass !== newPass2) {
     return res.status(400).json({ error: 'Passwords do not match' });
   }
-  
+
   await Account.changePassword(req.session.account._id, newPassHash);
 
   return res.status(200).json({ error: '' });

@@ -76,10 +76,7 @@ AccountSchema.statics.authenticate = async (username, password, callback) => {
   }
 };
 
-
 AccountSchema.statics.getUsername = (objectId, callback) => AccountModel.findOne({ _id: objectId }).select('username').lean().exec(callback);
-
-
 
 AccountSchema.statics.getCurrentPassword = async (objectId) => {
   const doc = await AccountModel.findOne({ _id: objectId }).exec();
@@ -94,9 +91,6 @@ AccountSchema.statics.changePassword = async (objectId, hashed) => {
 
   return doc;
 };
-
-
-
 
 AccountModel = mongoose.model('Account', AccountSchema);
 module.exports = AccountModel;
