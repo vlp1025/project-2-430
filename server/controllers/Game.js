@@ -14,7 +14,8 @@ const deleteGame = async (req, res) => {
 };
 
 const makeGame = async (req, res) => {
-  if (!req.body.name || !req.body.hours || !req.body.start || !req.body.fileId || !req.body.genre || !req.body.rating) {
+  if (!req.body.name || !req.body.hours || !req.body.start || !req.body.fileId
+     || !req.body.genre || !req.body.rating) {
     return res.status(400).json({ error: 'All fields are required' });
   }
 
