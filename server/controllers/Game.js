@@ -14,7 +14,7 @@ const deleteGame = async (req, res) => {
 };
 
 const makeGame = async (req, res) => {
-  if (!req.body.name || !req.body.hours || !req.body.start || !req.body.fileId || !req.body.genre) {
+  if (!req.body.name || !req.body.hours || !req.body.start || !req.body.fileId || !req.body.genre || !req.body.rating) {
     return res.status(400).json({ error: 'All fields are required' });
   }
 
@@ -24,6 +24,7 @@ const makeGame = async (req, res) => {
     genre: req.body.genre,
     fileId: req.body.fileId,
     start: req.body.start,
+    rating: req.body.rating,
     owner: req.session.account._id,
   };
 
@@ -36,6 +37,7 @@ const makeGame = async (req, res) => {
       start: newGame.start,
       fileId:
       newGame.fileId,
+      rating: newGame.rating,
       genre: newGame.genre,
     });
   } catch (err) {

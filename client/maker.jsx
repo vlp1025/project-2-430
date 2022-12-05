@@ -11,14 +11,16 @@ const handleGame = (e) => {
     const _csrf = e.target.querySelector('#_csrf').value;
     const fileId = e.target.querySelector('#gamefileId').value;
     const start = e.target.querySelector('#start').value;
+    const rating = e.target.querySelector('#gameRating').value;
 
 
-    if (!name || !hours || !start || !fileId || !genre) {
+
+    if (!name || !hours || !start || !fileId || !genre || !rating) {
         helper.handleError('All fields are required!');
         return false;
     }
 
-    helper.sendPost(e.target.action, { name, hours, start, genre, fileId, _csrf }, loadGamesFromServer);
+    helper.sendPost(e.target.action, { name, hours, start, genre, fileId, rating, _csrf }, loadGamesFromServer);
 
     return false;
 };
@@ -70,6 +72,12 @@ const GameForm = (props) => {
                         <label htmlFor="start" className="ml-12 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Start Date:</label>
                         <input type="date" id="start" name="start" className="ml-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
+                    <br />
+                    <div>
+                        <label htmlFor="rating" className="ml-12 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Rating 1 to 10:</label>
+                        <input type="number" id="gameRating" name="rating" min='0' max='10' className="ml-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                    </div>
+
 
                     <input type="hidden" id="_csrf" name="_csrf" value={props.csrf} />
                     <br /><br />
@@ -159,6 +167,8 @@ const GameList = (props) => {
                 <h3 className='gameGenre'>Genre: {game.genre} </h3>
                 <h3 className='gamefileId'>File ID: {game.fileId} </h3>
                 <h3 className='start'>Start Date: {parsedDate} </h3>
+                <h3 className='gameRating'>Rating: {game.rating} </h3>
+
                 {/* <img src={imageUrl} /> */}
                 <form
                     action="/delete"

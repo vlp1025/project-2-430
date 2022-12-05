@@ -23,6 +23,11 @@ const GameSchema = new mongoose.Schema({
     min: 0,
     required: true,
   },
+  rating: {
+    type: Number,
+    min: 0,
+    required: true,
+  },
   fileId: {
     type: String,
     required: true,
@@ -47,6 +52,7 @@ const GameSchema = new mongoose.Schema({
 GameSchema.statics.toAPI = (doc) => ({
   name: doc.name,
   hours: doc.hours,
+  rating: doc.rating,
   genre: doc.genre,
   fileId: doc.fileId,
   start: doc.start,
@@ -58,7 +64,7 @@ GameSchema.statics.findByOwner = (ownerId, callback) => {
     owner: mongoose.Types.ObjectId(ownerId),
   };
 
-  return GameModel.find(search).select('name hours start fileId genre').lean().exec(callback);
+  return GameModel.find(search).select('name hours start fileId genre rating').lean().exec(callback);
 };
 
 GameModel = mongoose.model('Game', GameSchema);

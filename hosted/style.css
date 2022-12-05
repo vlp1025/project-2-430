@@ -265,7 +265,7 @@
 .gameForm {
     margin-left: 15px;
     border: solid gray;
-    height: 550px;
+    height: 700px;
     width: 300px;
     padding-top:15px;
     background-color: gray;
@@ -367,6 +367,14 @@ h3.gameName {
  
  
 h3.gameHours {
+    color: cornflowerblue;
+    float:left;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 27px;
+}
+
+h3.gameRating {
     color: cornflowerblue;
     float:left;
     font-weight: bold;
