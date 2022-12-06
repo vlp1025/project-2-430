@@ -4,6 +4,7 @@ const { Game } = models;
 
 const makerPage = (req, res) => res.render('app');
 
+// handles deleting current game
 const deleteGame = async (req, res) => {
   try {
     await Game.deleteOne({ _id: req.body._id });
@@ -13,6 +14,7 @@ const deleteGame = async (req, res) => {
   }
 };
 
+// handles making a game with the correct info and attributes
 const makeGame = async (req, res) => {
   if (!req.body.name || !req.body.hours || !req.body.start || !req.body.fileId
      || !req.body.genre || !req.body.rating) {
@@ -50,6 +52,7 @@ const makeGame = async (req, res) => {
   }
 };
 
+// gets the saved games to display
 const getGames = (req, res) => {
   Game.findByOwner(req.session.account._id, (err, docs) => {
     if (err) {

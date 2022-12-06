@@ -5,6 +5,7 @@ let GameModel = {};
 
 const setName = (name) => _.escape(name).trim();
 
+// creates the structure of a game
 const GameSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -49,6 +50,7 @@ const GameSchema = new mongoose.Schema({
   },
 });
 
+// send the data to the server
 GameSchema.statics.toAPI = (doc) => ({
   name: doc.name,
   hours: doc.hours,
@@ -58,9 +60,9 @@ GameSchema.statics.toAPI = (doc) => ({
   start: doc.start,
 });
 
+// find info of the current logged in user
 GameSchema.statics.findByOwner = (ownerId, callback) => {
   const search = {
-    // Convert the string ownerId to an object id
     owner: mongoose.Types.ObjectId(ownerId),
   };
 

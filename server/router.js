@@ -2,6 +2,7 @@ const controllers = require('./controllers');
 const mid = require('./middleware');
 const file = require('./controllers/files.js');
 
+// sets the direction for all the pages of the app
 const router = (app) => {
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
   app.get('/getGames', mid.requiresLogin, controllers.Game.getGames);
@@ -26,8 +27,6 @@ const router = (app) => {
 
   app.post('/upload', file.uploadFile);
   app.get('/retrieve', file.retrieveFile);
-
-  // app.get('/', file.uploadPage);
 };
 
 module.exports = router;

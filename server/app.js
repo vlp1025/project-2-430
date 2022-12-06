@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+// all variables and libraries to use
 const path = require('path');
 const express = require('express');
 const compression = require('compression');
@@ -19,6 +20,7 @@ const router = require('./router.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
+// redis connection
 const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/GameMaker';
 mongoose.connect(dbURI, (err) => {
   if (err) {
@@ -38,6 +40,7 @@ redisClient.connect().catch(console.error);
 
 const app = express();
 
+// app usage of session, files and compressions
 app.use(fileUpload());
 app.use(helmet({
   crossOriginEmbedderPolicy: false,
@@ -61,6 +64,7 @@ app.use(session({
   },
 }));
 
+// sets the handlebars
 app.engine('handlebars', expressHandlebars.engine({ defaultLayout: '' }));
 
 app.set('view engine', 'handlebars');

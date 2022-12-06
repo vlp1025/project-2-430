@@ -9,6 +9,7 @@ const logout = (req, res) => {
   res.redirect('/');
 };
 
+// login account hanlder which sets the appropaite info to log an account
 const login = (req, res) => {
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;
@@ -28,6 +29,7 @@ const login = (req, res) => {
   });
 };
 
+// similar to login but in thid case we create an account
 const signup = async (req, res) => {
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;
@@ -58,6 +60,7 @@ const signup = async (req, res) => {
 
 const getToken = (req, res) => res.json({ csrfToken: req.csrfToken() });
 
+// helper function to ge tthe current logged in username
 const getUsername = (req, res) => {
   Account.getUsername(req.session.account._id, (err, doc) => {
     if (err) {
@@ -68,6 +71,7 @@ const getUsername = (req, res) => {
   });
 };
 
+// function that handles password change
 const changePassword = async (req, res) => {
   const newPass = `${req.body.newPass}`;
   const newPass2 = `${req.body.newPass2}`;
